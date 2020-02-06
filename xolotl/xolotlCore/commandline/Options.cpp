@@ -15,7 +15,7 @@ Options::Options() :
 				false), tempProfileFilename(""), heatFlag(false), bulkTemperature(
 				0.0), fluxFlag(false), fluxAmplitude(0.0), fluxProfileFlag(
 				false), perfRegistryType(xolotlPerf::IHandlerRegistry::std), vizStandardHandlersFlag(
-				false), materialName(""), initialVConcentration(0.0), voidPortion(
+				false), materialName(""), initialVConcentration(0.0), initialHConcentration(0.0), voidPortion(
 				50.0), dimensionNumber(1), useRegularGridFlag(true), useChebyshevGridFlag(
 				false), readInGridFlag(false), gridFilename(""), gbList(""), groupingMin(
 				std::numeric_limits<int>::max()), groupingWidthA(1), groupingWidthB(
@@ -93,6 +93,8 @@ void Options::readParams(int argc, char* argv[]) {
 					"the numbers correspond to the surface orientation.")(
 			"initialV", bpo::value<double>(&initialVConcentration),
 			"The value of the initial concentration of vacancies in the material.")(
+            "initialH", bpo::value<double>(&initialHConcentration),
+            "The value of the initial concentration of hydrogen in the material.")(
 			"zeta", bpo::value<double>(&zeta),
 			"The value of the electronic stopping power in the material (0.73 by default).")(
 			"voidPortion", bpo::value<double>(&voidPortion),

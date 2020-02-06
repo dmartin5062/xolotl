@@ -151,6 +151,13 @@ public:
 	 * @return The initial vacancy concentration
 	 */
 	virtual double getInitialVConc() const = 0;
+    
+    /**
+     * Get the initial hydrogen concentration.
+     *
+     * @return The initial hydrogen concentration
+     */
+    virtual double getInitialHConc() const = 0;
 
 	/**
 	 * Get the sputtering yield.

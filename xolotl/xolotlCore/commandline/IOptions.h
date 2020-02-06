@@ -183,6 +183,13 @@ public:
 	 * @return The concentration value
 	 */
 	virtual double getInitialVConcentration() const = 0;
+    
+    /**
+     * Obtain the value of the concentration for the hydrogen.
+     *
+     * @return The concentration value
+     */
+    virtual double getInitialHConcentration() const = 0;
 
 	/**
 	 * Obtain the value of the electronic stopping power.

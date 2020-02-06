@@ -102,6 +102,11 @@ protected:
 	 * Value of the initial vacancy concentration.
 	 */
 	double initialVConcentration;
+    
+    /**
+     * Value of the initial hydrogen concentration.
+     */
+    double initialHConcentration;
 
 	/**
 	 * Value of the electronic stopping power.
@@ -502,6 +507,14 @@ public:
 		return initialVConcentration;
 	}
 
+    /**
+     * Obtain the value of the concentration for the hydrogen.
+     * \see IOptions.h
+     */
+    double getInitialHConcentration() const override {
+        return initialHConcentration;
+    }
+    
 	/**
 	 * Obtain the value of the electronic stopping power.
 	 * \see IOptions.h

@@ -193,6 +193,12 @@ void PetscSolver1DHandler::initializeConcentration(DM &da, Vec &C) {
 	int vacancyIndex = -1;
 	if (singleVacancyCluster)
 		vacancyIndex = singleVacancyCluster->getId() - 1;
+    
+    // Get the single hydrogen ID
+    auto singleHydrogenCluster = network.get(xolotlCore::Species::D, 1);
+    int hydrogenIndex = -1;
+    if (singleHydrogenCluster)
+        hydrogenIndex = singleHydrogenCluster->getId() - 1;
 
 	// Loop on all the grid points
 	for (PetscInt i = xs; i < xs + xm; i++) {
@@ -215,6 +221,13 @@ void PetscSolver1DHandler::initializeConcentration(DM &da, Vec &C) {
 				&& !hasConcentrations && i < nX - rightOffset) {
 			concOffset[vacancyIndex] = initialVConc;
 		}
+        
+        // This will input Hydrogen concentration at 9.5 nm for my set up //46 for only D problems
+        // Initialize the hydrogen concentration
+        if (i >= 46  && singleHydrogenCluster
+                 && i <= 46) {
+            concOffset[hydrogenIndex] = initialHConc;
+        }
 	}
 
 	// If the concentration must be set from the HDF5 file

@@ -57,6 +57,9 @@ protected:
 
 	//! The initial vacancy concentration.
 	double initialVConc;
+    
+    //! The initial vacancy concentration.
+    double initialHConc;
 
 	//! The electronic stopping power for re-solution
 	double electronicStoppingPower;
@@ -390,7 +393,8 @@ protected:
 			network(_network), networkName(""), nX(0), nY(0), nZ(0), hX(0.0), hY(
 					0.0), hZ(0.0), leftOffset(1), rightOffset(1), bottomOffset(
 					1), topOffset(1), frontOffset(1), backOffset(1), initialVConc(
-					0.0), electronicStoppingPower(0.0), dimension(-1), portion(
+					0.0), initialHConc(
+                    0.0), electronicStoppingPower(0.0), dimension(-1), portion(
 					0.0), useRegularGrid(""), readInGrid(false), movingSurface(
 					false), bubbleBursting(false), useAttenuation(false), sputteringYield(
 					0.0), fluxHandler(nullptr), temperatureHandler(nullptr), diffusionHandler(
@@ -503,6 +507,9 @@ public:
 
 		// Set the initial vacancy concentration
 		initialVConc = options.getInitialVConcentration();
+        
+        // Set the initial hydrogen concentration
+        initialHConc = options.getInitialHConcentration();
 
 		// Set the electronic stopping power
 		electronicStoppingPower = options.getZeta();
@@ -616,6 +623,14 @@ public:
 	double getInitialVConc() const override {
 		return initialVConc;
 	}
+    
+    /**
+     * Get the initial hydrogen concentration.
+     * \see ISolverHandler.h
+     */
+    double getInitialHConc() const override {
+        return initialHConc;
+    }
 
 	/**
 	 * Get the sputtering yield.
